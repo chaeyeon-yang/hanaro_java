@@ -25,14 +25,24 @@ public class CustDao implements Dao<String, CustDto> {
     }
 
     @Override
-    public int update(CustDto custDto) throws  Exception{
-        System.out.println("Oracle DB:Updated ... "+custDto);
+    public int update(CustDto custDto) throws IdNotFoundException{
+        try {
+            System.out.println("Oracle DB:Updated ... "+custDto);
+
+        } catch (IdNotFoundException e) {
+            System.out.println("Invalid access ...");
+        }
         return 0;
     }
 
     @Override
-    public CustDto select(String s) throws  Exception{
-        return CustDto.builder().id(s).pwd("pwd01").name("james").build();
+    public CustDto select(String s) throws NotFoundException {
+        try {
+            return CustDto.builder().id(s).pwd("pwd01").name("james").build();
+        } catch (NotFoundException e) {
+            System.out.println("Invalid access ...");
+            return 0;
+        }
     }
 
     @Override

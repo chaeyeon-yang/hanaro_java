@@ -13,7 +13,6 @@ public class CustService implements Service<String, CustDto> {
     Dao<String, CustDto> dao;
 
     public CustService(){
-
         dao = new CustDao();
     }
 
@@ -37,8 +36,14 @@ public class CustService implements Service<String, CustDto> {
     }
 
     @Override
-    public int del(String s) throws Exception {
-        dao.delete(s);
+    public int del(String s) throws IdNotFoundException {
+        try {
+            dao.delete(s);
+        } catch (IdNotFoundException e) {
+            System.out.println("ID Not Found ...");
+        }
+
+
         return 0;
     }
 
