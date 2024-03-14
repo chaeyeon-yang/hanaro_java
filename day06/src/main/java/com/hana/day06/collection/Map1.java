@@ -17,7 +17,7 @@ public class Map1 {
         Set<String> keys = map.keySet();
 
         keys.forEach((k)-> System.out.println(k));
-        
+
         Collection<String> col = map.values();
         col.forEach((v)-> System.out.println(v));
     }
