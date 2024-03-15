@@ -1,3 +1,5 @@
+package Customer;
+
 import service.CustService;
 
 public class CustSelectTest {

@@ -1,13 +1,16 @@
+package Customer;
+
 import data.CustDto;
 import service.CustService;
 
-public class CustUpdateTest {
+
+public class CustInsertTest {
     public static void main(String[] args) {
         CustService service = new CustService();
-        // UPDATE
-        CustDto updateValue = CustDto.builder().id("id01").pwd("pwd01").build();
+        // INSERT
+        CustDto obj = CustDto.builder().id("id99").pwd("pwd99").name("james").build();
         try {
-            service.modify(updateValue);
+            service.add(obj);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
