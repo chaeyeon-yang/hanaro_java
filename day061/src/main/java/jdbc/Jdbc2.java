@@ -6,7 +6,7 @@ public class Jdbc2 {
     public static void main(String[] args) {
         // 1. Driver Loading
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("OK...");
         } catch (ClassNotFoundException e) {
             System.out.println("Driver Not Found....");
@@ -25,20 +25,28 @@ public class Jdbc2 {
             e.printStackTrace();
         }
         // 3. SQL 구문 생성
-        String selectSql = "SELECT * FROM db_cust";
+        String selectSql = "SELECT * FROM db_cust WHERE id = ?";
         PreparedStatement pstmt = null;
         ResultSet rset = null;
         try {
             pstmt = con.prepareStatement(selectSql);
+            pstmt.setString(1,"id01");
             //4. 전송
             rset = pstmt.executeQuery();
+            rset.next();
             // 5. 결과 출력
-            while(rset.next()){
-                String custId = rset.getString("id");
-                String custPwd = rset.getString("pwd");
-                String custName = rset.getString("name");
-                System.out.printf("%s %s %s %n",custId, custPwd, custName);
-            }
+            String custId = rset.getString("id");
+            String custPwd = rset.getString("pwd");
+            String custName = rset.getString("name");
+            System.out.printf("%s %s %s %n",custId, custPwd, custName);
+
+
+//            while(rset.next()){
+//                String custId = rset.getString("id");
+//                String custPwd = rset.getString("pwd");
+//                String custName = rset.getString("name");
+//                System.out.printf("%s %s %s %n",custId, custPwd, custName);
+//            }
 
             System.out.println("Inserted Data .....");
         } catch (SQLException e) {
