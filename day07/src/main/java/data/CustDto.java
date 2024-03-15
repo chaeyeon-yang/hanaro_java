@@ -15,5 +15,4 @@ public class CustDto {
     private String  pwd;
     private String name;
 
-
 }

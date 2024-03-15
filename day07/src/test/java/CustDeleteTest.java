@@ -1,14 +1,13 @@
 import data.CustDto;
 import service.CustService;
 
-
-public class CustInsertTest {
+public class CustDeleteTest {
     public static void main(String[] args) {
         CustService service = new CustService();
-        // INSERT
-        CustDto obj = CustDto.builder().id("id99").pwd("pwd99").name("james").build();
+        // DELETE
+        String gotoDelete = "id99";
         try {
-            service.add(obj);
+            service.remove(gotoDelete);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -32,7 +32,6 @@ public class CustService implements Service<String, CustDto> {
         try {
             con.setAutoCommit(false);
             repository.insert(custDto, con);
-            repository.insert(custDto, con);
             con.commit();
         }catch(Exception e){
             con.rollback();
@@ -45,21 +44,69 @@ public class CustService implements Service<String, CustDto> {
 
     @Override
     public CustDto modify(CustDto custDto) throws NotFoundIdException, Exception {
+        Connection con = cp.getConnection();
+        try {
+            con.setAutoCommit(false);
+            repository.update(custDto, con);
+            con.commit();
+        }catch(Exception e){
+            System.out.println("에러에러");
+            con.rollback();
+            throw e;
+        }finally {
+            cp.releaseConnection(con);
+        }
         return null;
     }
 
     @Override
     public Boolean remove(String s) throws NotFoundIdException, Exception {
+        Connection con = cp.getConnection();
+        try {
+            con.setAutoCommit(false);
+            repository.delete(s, con);
+            con.commit();
+        }catch(Exception e){
+            System.out.println("에러에러");
+            con.rollback();
+            throw e;
+        }finally {
+            cp.releaseConnection(con);
+        }
         return null;
     }
 
     @Override
     public List<CustDto> get() throws Exception {
+        Connection con = cp.getConnection();
+        try {
+            con.setAutoCommit(false);
+            repository.select(con);
+            con.commit();
+        }catch(Exception e){
+            System.out.println("에러에러");
+            con.rollback();
+            throw e;
+        }finally {
+            cp.releaseConnection(con);
+        }
         return null;
     }
 
     @Override
     public CustDto get(String s) throws NotFoundIdException, Exception {
+        Connection con = cp.getConnection();
+        try {
+            con.setAutoCommit(false);
+            repository.select(s, con);
+            con.commit();
+        }catch(Exception e){
+            System.out.println("에러에러");
+            con.rollback();
+            throw e;
+        }finally {
+            cp.releaseConnection(con);
+        }
         return null;
     }
 }

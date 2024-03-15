@@ -1,14 +1,12 @@
 import data.CustDto;
 import service.CustService;
 
-
-public class CustInsertTest {
+public class CustSelectAllTest {
     public static void main(String[] args) {
         CustService service = new CustService();
-        // INSERT
-        CustDto obj = CustDto.builder().id("id99").pwd("pwd99").name("james").build();
+        // SELECT ALL
         try {
-            service.add(obj);
+            service.get();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
