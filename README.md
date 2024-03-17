@@ -1,7 +1,7 @@
 ### JAVA
 #### 자바의 문법을 자바자바
 - 자바 문법 재정리
-
+- 노션 (https://trusting-dancer-4f2.notion.site/a1893a27da1f4527ac17df0aa12259b0?pvs=4)
 ### JDBC
 #### JDBC를 꽉 자바자바
   
